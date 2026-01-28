@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وەستا ئەحمەد - کەبابی تایبەتی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        :root {
+            --primary: #c62828;
+            --primary-dark: #8e0000;
+            --secondary: #f9a825;
+            --light: #f5f5f5;
+            --dark: #212121;
+            --success: #2e7d32;
+            --warning: #f57c00;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: var(--dark);
+            line-height: 1.6;
+            direction: rtl;
+            padding-top: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.05);
+            transform: rotate(30deg);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Side Profile */
+        .side-profile {
+            position: fixed;
+            top: 30%;
+            right: -400px;
+            width: 350px;
+            background: white;
+            border-radius: var(--radius) 0 0 var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            z-index: 1000;
+            transition: right 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            opacity: 0;
+        }
+
+        .side-profile.show {
+            right: 0;
+            opacity: 1;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary);
+            margin-left: 1rem;
+        }
+
+        .profile-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: space-around;
+            margin: 1.5rem 0;
+        }
+
+        .contact-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-icons a:hover {
+            transform: translateY(-5px);
+        }
+
+        .viber { background: #7360F2; }
+        .whatsapp { background: #25D366; }
+        .instagram { background: #E4405F; }
+        .facebook { background: #1877F2; }
+        .phone { background: var(--primary); }
+
+        .contact-detail {
+            background: #f9f9f9;
+            padding: 0.8rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: var(--primary);
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-left: 0.5rem;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .experience-badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            margin-bottom: 2rem;
+        }
+
+        .menu-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 0.7rem 1.5rem;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .item-content {
+            padding: 1.2rem;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .item-title {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            font-weight: bold;
+        }
+
+        .item-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .item-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .item-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 50px;
+            padding: 0.3rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .quantity {
+            margin: 0 0.8rem;
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .add-to-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: #ddd;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 0.5rem;
+        }
+
+        .favorite-btn.active {
+            color: #ff4081;
+        }
+
+        .spice-selector {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .spice-level {
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+            color: #666;
+        }
+
+        .spice-dots {
+            display: flex;
+            gap: 0.2rem;
+        }
+
+        .spice-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .spice-dot.active {
+            background: var(--warning);
+        }
+
+        /* Cart Section */
+        .cart-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            position: sticky;
+            bottom: 20px;
+            z-index: 100;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-details {
+            display: flex;
+            gap: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-price {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+        }
+
+        .total-price {
+            color: var(--primary);
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #e69500;
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: #f9f9f9;
+        }
+
+        /* Order Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--radius) var(--radius) 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+        }
+
+        .location-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .location-option {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .location-option.active {
+            border-color: var(--primary);
+            background: rgba(198, 40, 40, 0.05);
+        }
+
+        .location-option i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .notes-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .note-option {
+            padding: 0.5rem 1rem;
+            background: #f5f5f5;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .note-option.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .datetime-picker {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .datetime-picker input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--dark);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            z-index: 3000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            background: var(--primary);
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        /* Success Animation */
+        .success-animation {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--success);
+            margin: 0 auto 1.5rem;
+            position: relative;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .checkmark::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            border-right: 5px solid white;
+            border-bottom: 5px solid white;
+            top: 10px;
+            left: 28px;
+            transform: rotate(45deg);
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        /* Loyalty Points */
+        .loyalty-points {
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .points-display {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .orders-list {
+            margin-top: 1.5rem;
+        }
+
+        .order-card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            margin-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .side-profile {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-profile {
+                position: relative;
+                width: 100%;
+                right: 0;
+                opacity: 1;
+                top: 0;
+                margin-bottom: 2rem;
+                border-radius: var(--radius);
+                display: none;
+            }
+            
+            .side-profile.show {
+                display: block;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .menu-items {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .cart-section {
+                position: static;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .location-options {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">وەستا ئەحمەد <span>کەباب</span></div>
+            <p class="tagline">باشترین کەبابی شاری هەولێر لە ماوەی ٦+ ساڵە</p>
+        </header>
+
+        <!-- Side Profile (Animated) -->
+        <div class="side-profile" id="sideProfile">
+            <div class="profile-header">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="وەستا ئەحمەد" class="profile-img">
+                <div class="profile-info">
+                    <h3>وەستا ئەحمەد</h3>
+                    <p>خاوەنی کەبابخانە</p>
+                </div>
+            </div>
+            <div class="contact-icons">
+                <a href="viber://contact?number=07701234567" class="viber" title="ڤایبەر"><i class="fab fa-viber"></i></a>
+                <a href="https://wa.me/9647701234567" class="whatsapp" target="_blank" title="واتساپ"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/wasta_ahmad_kebab" class="instagram" target="_blank" title="ئیستاگرام"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/wastaahmadkebab" class="facebook" target="_blank" title="فەیسبووک"><i class="fab fa-facebook"></i></a>
+                <a href="tel:07701234567" class="phone" title="ژمارەی مۆبایل"><i class="fas fa-phone"></i></a>
+            </div>
+            <div class="contact-detail">
+                <i class="fas fa-phone"></i> ٠٧٧٠ ١٢٣ ٤٥٦٧
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <h2 class="section-title"><i class="fas fa-user"></i> دەربارەی وەستا ئەحمەد</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>بەخێربێن بۆ کەبابخانەی وەستا ئەحمەد! من بۆ ماوەی زیاتر لە ٦ ساڵە کەباب لە شاری هەولێر دروست دەکەم و فرۆشتنیم کردووە.</p>
+                    <p>کەبابەکانم بە تامێکی تایبەت و بەهۆی بەکارهێنانی بەهارەت و گۆشتی تازە هەمیشە جیایان کردووەتەوە لە کەبابەکانی تر. هەموو ڕۆژێک گۆشتی تازە لە ڕەواءە کۆدەکەمەوە و بەهەمان ڕۆژدا دروستی دەکەم.</p>
+                    <p>ئەو ڕەسەنایەتەی کە لە کەباب دروستکردندا بەکاردەهێنم وەک میراتێک لە باوکەوە پێم گوێزراوەتەوە و بەوردەیی بەکاری دەهێنم.</p>
+                    <div class="experience-badge">
+                        <i class="fas fa-award"></i> ٦+ ساڵ لە بواری کەباب دروستکردندا
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="کەبابی وەستا ئەحمەد">
+                </div>
+            </div>
+        </section>
+
+        <!-- Loyalty Points -->
+        <div class="loyalty-points" id="loyaltyPoints">
+            <div class="points-display" id="pointsDisplay">٠ خاڵ</div>
+            <p>هەر ١٠٠٠ دینار = ١ خاڵ • ١٠٠ خاڵ = کەبابێکی بێبەرامبەر!</p>
+        </div>
+
+        <!-- Menu Section -->
+        <section class="menu-section">
+            <h2 class="section-title"><i class="fas fa-utensils"></i> مێنیو</h2>
+            
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">هەموو</button>
+                <button class="category-btn" data-category="kebab">کەباب</button>
+                <button class="category-btn" data-category="tika">تکا</button>
+                <button class="category-btn" data-category="special">تایبەت</button>
+            </div>
+            
+            <div class="menu-items" id="menuItems">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section class="cart-section">
+            <div class="cart-header">
+                <h2 class="section-title"><i class="fas fa-shopping-cart"></i> سەبەتە</h2>
+                <div class="cart-total">
+                    <span>کۆی گشتی:</span>
+                    <span class="total-price" id="totalPrice">٠ دینار</span>
+                </div>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be populated by JavaScript -->
+                <p style="text-align: center; padding: 2rem; color: #999;" id="emptyCartMessage">هێشتا هیچت زیاد نەکردووە بۆ سەبەتە</p>
+            </div>
+            
+            <div class="cart-actions">
+                <button class="btn btn-outline" id="clearCartBtn">
+                    <i class="fas fa-trash"></i> پاککردنەوەی سەبەتە
+                </button>
+                <button class="btn btn-primary" id="orderBtn">
+                    <i class="fas fa-check-circle"></i> داواکاری
+                </button>
+                <button class="btn btn-secondary" id="scheduleOrderBtn">
+                    <i class="fas fa-calendar-alt"></i> داواکاری بە کاتی
+                </button>
+            </div>
+        </section>
+
+        <!-- Admin Panel (Hidden by default) -->
+        <div class="admin-panel" id="adminPanel">
+            <h2 class="section-title"><i class="fas fa-cog"></i> پانێلی بەڕێوەبردن (داواکاریەکان)</h2>
+            <p>ئەمە پانێلێکی ناوخۆیییە بۆ بینینی داواکاریەکان کە لە Formspree وەرگیراون (نموونەیی)</p>
+            <button class="btn btn-outline" id="refreshOrdersBtn">
+                <i class="fas fa-sync"></i> نوێکردنەوەی داواکاریەکان
+            </button>
+            <div class="orders-list" id="ordersList">
+                <!-- Orders will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>کەبابخانەی وەستا ئەحمەد &copy; ٢٠٢٣ - هەموو مافەکان پارێزراون</p>
+            <p>هەولێر، کوردستان - ژمارە: ٠٧٧٠ ١٢٣ ٤٥٦٧</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">ئەم وێبسایتە بە Formspree کار دەکات بۆ وەرگرتنی داواکاریەکان</p>
+        </footer>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">تەواوکردنی داواکاری</h3>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm">
+                    <!-- Step 1: Location -->
+                    <div class="form-step" id="step1">
+                        <div class="form-group">
+                            <label class="form-label">شوێن</label>
+                            <p>پێویستە شوێنەکەت ڕابگەیەنیت یان خۆت دەیھێنیتە کەبابخانە</p>
+                            
+                            <div class="location-options">
+                                <div class="location-option" data-type="delivery">
+                                    <i class="fas fa-truck"></i>
+                                    <h4>ناردن</h4>
+                                    <p>کەبابەکان دەنێردرێن بۆ شوێنەکەت</p>
+                                </div>
+                                <div class="location-option active" data-type="pickup">
+                                    <i class="fas fa-store"></i>
+                                    <h4>هێنان</h4>
+                                    <p>خۆت دەیھێنیتە کەبابخانە</p>
+                                </div>
+                            </div>
+                            
+                            <input type="hidden" id="locationType" name="locationType" value="pickup">
+                            
+                            <div class="form-group" id="locationInputGroup">
+                                <label class="form-label" for="location">ناونیشان</label>
+                                <button type="button" class="btn btn-outline" id="getLocationBtn" style="width: 100%; margin-bottom: 10px;">
+                                    <i class="fas fa-map-marker-alt"></i> بینینی شوێنەکەم بە خۆکار
+                                </button>
+                                <p style="text-align: center; margin: 10px 0; color: #666;">یان</p>
+                                <input type="text" class="form-control" id="location" name="location" placeholder="ناونیشانی تەواو" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">کاتی داواکاری</label>
+                            <div class="datetime-picker">
+                                <input type="date" class="form-control" id="orderDate" name="orderDate" required>
+                                <input type="time" class="form-control" id="orderTime" name="orderTime" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">ئاستی گەرمی (بۆ هەموو کەبابەکان)</label>
+                            <div class="spice-selector">
+                                <div class="spice-dots">
+                                    <div class="spice-dot" data-level="0"></div>
+                                    <div class="spice-dot" data-level="1"></div>
+                                    <div class="spice-dot active" data-level="2"></div>
+                                    <div class="spice-dot" data-level="3"></div>
+                                    <div class="spice-dot" data-level="4"></div>
+                                    <div class="spice-dot" data-level="5"></div>
+                                </div>
+                                <span class="spice-level">مامناوەند</span>
+                                <input type="hidden" id="spiceLevel" name="spiceLevel" value="2">
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: left;">
+                            <button type="button" class="btn btn-primary" id="nextStepBtn">داھاتوو <i class="fas fa-arrow-left"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Notes -->
+                    <div class="form-step" id="step2" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">تێبینیەکان (هەڵبژاردەیی)</label>
+                            <p>تێبینیەکانت لەسەر داواکاریەکە بنووسە:</p>
+                            
+                            <div class="notes-list">
+                                <div class="note-option" data-note="توماتی زیاتر">توماتی زیاتر</div>
+                                <div class="note-option" data-note="پیازی کەمتر">پیازی کەمتر</div>
+                                <div class="note-option" data-note="بەهارەتی زیاتر">بەهارەتی زیاتر</div>
+                                <div class="note-option" data-note="لیمۆی زیاتر">لیمۆی زیاتر</div>
+                                <div class="note-option" data-note="بەرەکانی نەرم">بەرەکانی نەرم</div>
+                                <div class="note-option" data-note="گۆشتی توند">گۆشتی توند</div>
+                            </div>
+                            
+                            <textarea class="form-control" id="notes" name="notes" rows="4" placeholder="تێبینیەکانی تری خۆت لێرە بنووسە..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">ژمارەی مۆبایل (هەڵبژاردەیی)</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="٠٧٧٠ ١٢٣ ٤٥٦٧">
+                            <small>تەنیا ئەگەر دەتەوێت پەیوەندیم پێوەبکەین بۆ گۆڕانکاری لە داواکاریەکە</small>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between;">
+                            <button type="button" class="btn btn-outline" id="prevStepBtn">
+                                <i class="fas fa-arrow-right"></i> پێشوو
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="submitOrderBtn">
+                                <i class="fas fa-check"></i> ناردنی داواکاری
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Success Animation -->
+                <div class="success-animation" id="successAnimation" style="display: none;">
+                    <div class="checkmark"></div>
+                    <h3>داواکاریەکەت پێشکەش کرا!</h3>
+                    <p>داواکاریەکەت بە سەرکەوتوویی نێردرا. ئەگەر ناردنەکەت هەڵبژاردبێت، کەبابەکان بەم کاتەدا دەگاتە لایت: <span id="deliveryTime"></span></p>
+                    <p>ژمارەی داواکاریەکەت: <strong id="orderNumber"></strong></p>
+                    <p>سوپاس بۆ داواکاری لە کەبابخانەی وەستا ئەحمەد!</p>
+                    <button class="btn btn-primary" id="closeSuccessBtn" style="margin-top: 1.5rem;">
+                        <i class="fas fa-home"></i> گەڕانەوە بۆ سەرەتا
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // Formspree Configuration
+        const FORMSPREE_URL = "https://formspree.io/f/xbjnwpae"; // Replace with your actual Formspree ID
+        
+        // Global Variables
+        let cart = JSON.parse(localStorage.getItem('wastaCart')) || [];
+        let loyaltyPoints = parseInt(localStorage.getItem('wastaLoyaltyPoints')) || 0;
+        let favoriteItems = JSON.parse(localStorage.getItem('wastaFavorites')) || [];
+        let orders = JSON.parse(localStorage.getItem('wastaOrders')) || [];
+        
+        // Menu Data
+        const menuItems = [
+            {
+                id: 1,
+                name: "کەبابی گۆشتی",
+                description: "گۆشتی بەراز بە هەڵبژاردەی باشترین بەهارەت",
+                price: 6000,
+                category: "kebab",
+                image: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 2
+            },
+            {
+                id: 2,
+                name: "کەبابی مەریشک",
+                description: "مەریشکی تازە بە هەمان ڕێگەی تایبەتی وەستا",
+                price: 5500,
+                category: "kebab",
+                image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 2
+            },
+            {
+                id: 3,
+                name: "تکای مەریشک",
+                description: "مەریشک بە شێوازێکی تایبەت و بە تامێکی نایاب",
+                price: 5000,
+                category: "tika",
+                image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 2
+            },
+            {
+                id: 4,
+                name: "تکای جگەر",
+                description: "جگەری تازە بە تامێکی تایبەت",
+                price: 4500,
+                category: "tika",
+                image: "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&auto=format&fit=crop&w-600&q=80",
+                spiceLevel: 2
+            },
+            {
+                id: 5,
+                name: "کەبابی گۆشتی بەراز و مەریشک",
+                description: "هاوتێکی نایاب لە گۆشتی بەراز و مەریشک",
+                price: 7000,
+                category: "special",
+                image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 3
+            },
+            {
+                id: 6,
+                name: "تکای گۆشتی بەراز",
+                description: "گۆشتی بەراز بە شێوازێکی تایبەت",
+                price: 6500,
+                category: "tika",
+                image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 2
+            },
+            {
+                id: 7,
+                name: "کەبابی گۆشتی بەراز بە هەواڵی نایاب",
+                description: "گۆشتی بەراز بە هەواڵی نایاب و تامێکی تایبەت",
+                price: 8000,
+                category: "special",
+                image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 4
+            },
+            {
+                id: 8,
+                name: "تکای مەریشک بە هەواڵی نایاب",
+                description: "مەریشک بە هەواڵی نایاب و تامێکی تایبەت",
+                price: 6000,
+                category: "tika",
+                image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 3
+            },
+            {
+                id: 9,
+                name: "کەبابی گۆشتی بەراز بە جگەر",
+                description: "هاوتێک لە گۆشتی بەراز و جگەر",
+                price: 7500,
+                category: "special",
+                image: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 3
+            },
+            {
+                id: 10,
+                name: "تکای جگەر بە هەواڵی نایاب",
+                description: "جگەر بە هەواڵی نایاب و تامێکی تایبەت",
+                price: 5500,
+                category: "tika",
+                image: "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 4
+            },
+            {
+                id: 11,
+                name: "پەنجەی وەستا",
+                description: "تایبەتترین کەباب بە ناوی وەستا ئەحمەد",
+                price: 9000,
+                category: "special",
+                image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                spiceLevel: 2
+            }
+        ];
+        
+        // DOM Elements
+        const sideProfile = document.getElementById('sideProfile');
+        const menuItemsContainer = document.getElementById('menuItems');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        const totalPriceElement = document.getElementById('totalPrice');
+        const orderBtn = document.getElementById('orderBtn');
+        const clearCartBtn = document.getElementById('clearCartBtn');
+        const scheduleOrderBtn = document.getElementById('scheduleOrderBtn');
+        const orderModal = document.getElementById('orderModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const orderForm = document.getElementById('orderForm');
+        const locationOptions = document.querySelectorAll('.location-option');
+        const getLocationBtn = document.getElementById('getLocationBtn');
+        const locationInput = document.getElementById('location');
+        const nextStepBtn = document.getElementById('nextStepBtn');
+        const prevStepBtn = document.getElementById('prevStepBtn');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const submitOrderBtn = document.getElementById('submitOrderBtn');
+        const successAnimation = document.getElementById('successAnimation');
+        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+        const toast = document.getElementById('toast');
+        const loyaltyPointsElement = document.getElementById('pointsDisplay');
+        const spiceDots = document.querySelectorAll('.spice-dot');
+        const spiceLevelInput = document.getElementById('spiceLevel');
+        const noteOptions = document.querySelectorAll('.note-option');
+        const notesTextarea = document.getElementById('notes');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const adminPanel = document.getElementById('adminPanel');
+        const refreshOrdersBtn = document.getElementById('refreshOrdersBtn');
+        const ordersList = document.getElementById('ordersList');
+        const deliveryTimeElement = document.getElementById('deliveryTime');
+        const orderNumberElement = document.getElementById('orderNumber');
+        
+        // Initialize the page
+        function init() {
+            // Show admin panel if URL has admin parameter
+            if (window.location.href.includes('?admin')) {
+                adminPanel.classList.add('active');
+            }
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('orderDate').min = today;
+            
+            // Set default time to next hour
+            const nextHour = new Date();
+            nextHour.setHours(nextHour.getHours() + 1);
+            document.getElementById('orderTime').value = `${nextHour.getHours().toString().padStart(2, '0')}:${nextHour.getMinutes().toString().padStart(2, '0')}`;
+            
+            // Render menu
+            renderMenuItems();
+            
+            // Render cart
+            renderCart();
+            
+            // Update loyalty points display
+            updateLoyaltyPoints();
+            
+            // Load orders from localStorage
+            loadOrders();
+            
+            // Initialize event listeners
+            setupEventListeners();
+            
+            // Setup scroll animation for side profile
+            setupScrollAnimation();
+        }
+        
+        // Setup scroll animation for side profile
+        function setupScrollAnimation() {
+            let hasAnimated = false;
+            
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+                
+                // Animate side profile after 2-2.8 seconds of scrolling
+                if (scrollPosition > 300 && !hasAnimated) {
+                    setTimeout(() => {
+                        sideProfile.classList.add('show');
+                        hasAnimated = true;
+                    }, 2500); // 2.5 seconds
+                }
+                
+                // For mobile, show side profile immediately when scrolled into view
+                if (window.innerWidth <= 768) {
+                    const profilePosition = sideProfile.getBoundingClientRect();
+                    if (profilePosition.top < window.innerHeight && !hasAnimated) {
+                        sideProfile.classList.add('show');
+                        hasAnimated = true;
+                    }
+                }
+            });
+            
+            // Trigger on load if already scrolled
+            if (window.scrollY > 300) {
+                setTimeout(() => {
+                    sideProfile.classList.add('show');
+                    hasAnimated = true;
+                }, 500);
+            }
+        }
+        
+        // Render menu items
+        function renderMenuItems(filter = 'all') {
+            menuItemsContainer.innerHTML = '';
+            
+            const filteredItems = filter === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category === filter);
+            
+            filteredItems.forEach(item => {
+                const isFavorite = favoriteItems.includes(item.id);
+                const itemElement = document.createElement('div');
+                itemElement.className = 'menu-item';
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="item-image">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">${item.name}</h3>
+                            <button class="favorite-btn ${isFavorite ? 'active' : ''}" data-id="${item.id}">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                        <p class="item-description">${item.description}</p>
+                        <div class="spice-selector">
+                            <div class="spice-level">ئاستی گەرمی: ${getSpiceLevelText(item.spiceLevel)}</div>
+                        </div>
+                        <div class="item-controls">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                                <span class="quantity" id="quantity-${item.id}">0</span>
+                                <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                            </div>
+                            <div>
+                                <span class="item-price">${item.price.toLocaleString()} دینار</span>
+                                <button class="add-to-cart" data-id="${item.id}">
+                                    <i class="fas fa-cart-plus"></i> زیادکردن
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                menuItemsContainer.appendChild(itemElement);
+            });
+            
+            // Update quantities in menu to match cart
+            updateMenuQuantities();
+            
+            // Add event listeners to menu items
+            addMenuEventListeners();
+        }
+        
+        // Get spice level text
+        function getSpiceLevelText(level) {
+            const levels = ['هیچ', 'زۆر کەم', 'کەم', 'مامناوەند', 'تۆزێک گەرم', 'زۆر گەرم'];
+            return levels[level] || 'مامناوەند';
+        }
+        
+        // Update quantities in menu to match cart
+        function updateMenuQuantities() {
+            cart.forEach(item => {
+                const quantityElement = document.getElementById(`quantity-${item.id}`);
+                if (quantityElement) {
+                    quantityElement.textContent = item.quantity;
+                }
+            });
+        }
+        
+        // Add event listeners to menu items
+        function addMenuEventListeners() {
+            // Favorite buttons
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    toggleFavorite(itemId);
+                    this.classList.toggle('active');
+                });
+            });
+            
+            // Increase quantity buttons
+            document.querySelectorAll('.quantity-btn.increase').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    increaseQuantity(itemId);
+                });
+            });
+            
+            // Decrease quantity buttons
+            document.querySelectorAll('.quantity-btn.decrease').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    decreaseQuantity(itemId);
+                });
+            });
+            
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    addToCart(itemId);
+                });
+            });
+        }
+        
+        // Toggle favorite item
+        function toggleFavorite(itemId) {
+            const index = favoriteItems.indexOf(itemId);
+            if (index === -1) {
+                favoriteItems.push(itemId);
+                showToast('بەخەڵاتەکە زیادکرا بۆ بەخەڵاتەکان', 'success');
+            } else {
+                favoriteItems.splice(index, 1);
+                showToast('بەخەڵاتەکە سڕدرایەوە لە بەخەڵاتەکان', 'info');
+            }
+            localStorage.setItem('wastaFavorites', JSON.stringify(favoriteItems));
+        }
+        
+        // Increase quantity in menu
+        function increaseQuantity(itemId) {
+            const quantityElement = document.getElementById(`quantity-${itemId}`);
+            let quantity = parseInt(quantityElement.textContent);
+            quantity++;
+            quantityElement.textContent = quantity;
+        }
+        
+        // Decrease quantity in menu
+        function decreaseQuantity(itemId) {
+            const quantityElement = document.getElementById(`quantity-${itemId}`);
+            let quantity = parseInt(quantityElement.textContent);
+            if (quantity > 0) {
+                quantity--;
+                quantityElement.textContent = quantity;
+            }
+        }
+        
+        // Add item to cart
+        function addToCart(itemId) {
+            const quantityElement = document.getElementById(`quantity-${itemId}`);
+            const quantity = parseInt(quantityElement.textContent);
+            
+            if (quantity === 0) {
+                showToast('تکایە ژمارەیەک دیاری بکە پێش زیادکردن بۆ سەبەتە', 'error');
+                return;
+            }
+            
+            const item = menuItems.find(i => i.id === itemId);
+            const existingItemIndex = cart.findIndex(i => i.id === itemId);
+            
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: quantity,
+                    spiceLevel: item.spiceLevel
+                });
+            }
+            
+            // Reset quantity in menu
+            quantityElement.textContent = 0;
+            
+            // Update cart in localStorage
+            localStorage.setItem('wastaCart', JSON.stringify(cart));
+            
+            // Update cart display
+            renderCart();
+            
+            // Show success message
+            showToast(`${quantity} ${item.name} زیادکرا بۆ سەبەتە`, 'success');
+        }
+        
+        // Render cart
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                
+                let total = 0;
+                
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-details">
+                                <span>نرخ: ${item.price.toLocaleString()} دینار</span>
+                                <span>ئاستی گەرمی: ${getSpiceLevelText(item.spiceLevel)}</span>
+                            </div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn decrease-cart" data-index="${index}">-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="quantity-btn increase-cart" data-index="${index}">+</button>
+                            </div>
+                            <div class="cart-item-price">${itemTotal.toLocaleString()} دینار</div>
+                            <button class="quantity-btn remove-item" data-index="${index}" style="background: #ff4444; color: white;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+                
+                // Update total price
+                totalPriceElement.textContent = `${total.toLocaleString()} دینار`;
+                
+                // Calculate loyalty points
+                const newPoints = Math.floor(total / 1000);
+                if (newPoints > 0 && loyaltyPoints < newPoints) {
+                    loyaltyPoints = newPoints;
+                    localStorage.setItem('wastaLoyaltyPoints', loyaltyPoints.toString());
+                    updateLoyaltyPoints();
+                }
+            }
+            
+            // Add event listeners to cart items
+            addCartEventListeners();
+        }
+        
+        // Add event listeners to cart items
+        function addCartEventListeners() {
+            // Increase quantity in cart
+            document.querySelectorAll('.increase-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart[index].quantity++;
+                    localStorage.setItem('wastaCart', JSON.stringify(cart));
+                    renderCart();
+                });
+            });
+            
+            // Decrease quantity in cart
+            document.querySelectorAll('.decrease-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity--;
+                    } else {
+                        cart.splice(index, 1);
+                    }
+                    localStorage.setItem('wastaCart', JSON.stringify(cart));
+                    renderCart();
+                });
+            });
+            
+            // Remove item from cart
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const itemName = cart[index].name;
+                    cart.splice(index, 1);
+                    localStorage.setItem('wastaCart', JSON.stringify(cart));
+                    renderCart();
+                    showToast(`${itemName} سڕدرایەوە لە سەبەتە`, 'info');
+                });
+            });
+        }
+        
+        // Update loyalty points display
+        function updateLoyaltyPoints() {
+            loyaltyPointsElement.textContent = `${loyaltyPoints.toLocaleString()} خاڵ`;
+        }
+        
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            toast.textContent = message;
+            toast.className = 'toast';
+            toast.classList.add(type);
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Order button
+            orderBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    showToast('سەبەتەکەت بەتاڵە! پێش داواکاری کەباب زیادبکە', 'error');
+                    return;
+                }
+                orderModal.classList.add('active');
+            });
+            
+            // Schedule order button
+            scheduleOrderBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    showToast('سەبەتەکەت بەتاڵە! پێش داواکاری کەباب زیادبکە', 'error');
+                    return;
+                }
+                orderModal.classList.add('active');
+            });
+            
+            // Clear cart button
+            clearCartBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    showToast('سەبەتەکەت بەتاڵە!', 'info');
+                    return;
+                }
+                
+                if (confirm('دڵنیایت دەتەوێت هەموو کەبابەکان لە سەبەتە بسڕیتەوە؟')) {
+                    cart = [];
+                    localStorage.setItem('wastaCart', JSON.stringify(cart));
+                    renderCart();
+                    showToast('سەبەتە پاککرایەوە', 'success');
+                }
+            });
+            
+            // Close modal button
+            closeModalBtn.addEventListener('click', function() {
+                orderModal.classList.remove('active');
+                resetForm();
+            });
+            
+            // Location options
+            locationOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    locationOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('locationType').value = this.getAttribute('data-type');
+                    
+                    // Update location input requirement
+                    if (this.getAttribute('data-type') === 'pickup') {
+                        locationInput.required = false;
+                        locationInput.placeholder = "ناونیشان (هەڵبژاردەیی بۆ هێنان)";
+                    } else {
+                        locationInput.required = true;
+                        locationInput.placeholder = "ناونیشانی تەواو (پێویستە)";
+                    }
+                });
+            });
+            
+            // Get location button
+            getLocationBtn.addEventListener('click', function() {
+                if (!navigator.geolocation) {
+                    showToast('بەزاندنی شوێن پاڵپشتی ناکرێت لەم وێبگەڕە', 'error');
+                    return;
+                }
+                
+                showToast('شوێنەکەت دەدۆزرێتەوە...', 'info');
+                
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        
+                        // Use OpenStreetMap Nominatim for reverse geocoding
+                        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const address = data.display_name || `${latitude}, ${longitude}`;
+                                locationInput.value = address;
+                                showToast('شوێنەکەت دۆزرایەوە و زیادکرا', 'success');
+                            })
+                            .catch(error => {
+                                console.error('Error getting address:', error);
+                                locationInput.value = `${latitude}, ${longitude}`;
+                                showToast('شوێنەکەت دۆزرایەوە', 'success');
+                            });
+                    },
+                    function(error) {
+                        console.error('Error getting location:', error);
+                        showToast('نەتوانرا شوێنەکەت بدۆزرێتەوە. تکایە دەستبکە بە ناونیشانەکەت', 'error');
+                    }
+                );
+            });
+            
+            // Next step button
+            nextStepBtn.addEventListener('click', function() {
+                // Validate location
+                if (document.getElementById('locationType').value === 'delivery' && !locationInput.value.trim()) {
+                    showToast('تکایە ناونیشانەکەت بنووسە یان شوێنەکەت بدۆزەرەوە', 'error');
+                    return;
+                }
+                
+                // Validate date and time
+                const orderDate = document.getElementById('orderDate').value;
+                const orderTime = document.getElementById('orderTime').value;
+                
+                if (!orderDate || !orderTime) {
+                    showToast('تکایە ڕێکەوت و کاتی داواکاری دیاری بکە', 'error');
+                    return;
+                }
+                
+                // Check if selected time is in the future
+                const selectedDateTime = new Date(`${orderDate}T${orderTime}`);
+                const now = new Date();
+                
+                if (selectedDateTime < now) {
+                    showToast('تکایە کاتێکی داهاتوو دیاری بکە', 'error');
+                    return;
+                }
+                
+                // Proceed to next step
+                step1.style.display = 'none';
+                step2.style.display = 'block';
+            });
+            
+            // Previous step button
+            prevStepBtn.addEventListener('click', function() {
+                step2.style.display = 'none';
+                step1.style.display = 'block';
+            });
+            
+            // Spice level selector
+            spiceDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const level = this.getAttribute('data-level');
+                    spiceDots.forEach(d => d.classList.remove('active'));
+                    this.classList.add('active');
+                    spiceLevelInput.value = level;
+                    
+                    // Update text
+                    const levelText = getSpiceLevelText(parseInt(level));
+                    document.querySelector('.spice-level').textContent = levelText;
+                });
+            });
+            
+            // Note options
+            noteOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    
+                    // Add or remove note from textarea
+                    const note = this.getAttribute('data-note');
+                    let currentNotes = notesTextarea.value;
+                    
+                    if (this.classList.contains('active')) {
+                        // Add note
+                        if (currentNotes) {
+                            notesTextarea.value = currentNotes + ', ' + note;
+                        } else {
+                            notesTextarea.value = note;
+                        }
+                    } else {
+                        // Remove note
+                        const notesArray = currentNotes.split(', ').filter(n => n !== note);
+                        notesTextarea.value = notesArray.join(', ');
+                    }
+                });
+            });
+            
+            // Form submission
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitOrder();
+            });
+            
+            // Close success button
+            closeSuccessBtn.addEventListener('click', function() {
+                orderModal.classList.remove('active');
+                resetForm();
+                
+                // Clear cart after successful order
+                cart = [];
+                localStorage.setItem('wastaCart', JSON.stringify(cart));
+                renderCart();
+            });
+            
+            // Category filter buttons
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const category = this.getAttribute('data-category');
+                    renderMenuItems(category);
+                });
+            });
+            
+            // Refresh orders button
+            refreshOrdersBtn.addEventListener('click', function() {
+                loadOrders();
+                showToast('داواکاریەکان نوێکرانەوە', 'success');
+            });
+            
+            // Close modal when clicking outside
+            orderModal.addEventListener('click', function(e) {
+                if (e.target === orderModal) {
+                    orderModal.classList.remove('active');
+                    resetForm();
+                }
+            });
+        }
+        
+        // Submit order
+        function submitOrder() {
+            // Show loading state
+            submitOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> نێردرێت...';
+            submitOrderBtn.disabled = true;
+            
+            // Gather order data
+            const orderData = {
+                items: cart,
+                total: calculateTotal(),
+                locationType: document.getElementById('locationType').value,
+                location: document.getElementById('location').value,
+                orderDate: document.getElementById('orderDate').value,
+                orderTime: document.getElementById('orderTime').value,
+                spiceLevel: document.getElementById('spiceLevel').value,
+                notes: document.getElementById('notes').value,
+                phone: document.getElementById('phone').value,
+                timestamp: new Date().toISOString(),
+                orderNumber: generateOrderNumber()
+            };
+            
+            // Generate delivery time estimate
+            const deliveryTime = estimateDeliveryTime(orderData);
+            deliveryTimeElement.textContent = deliveryTime;
+            orderNumberElement.textContent = orderData.orderNumber;
+            
+            // Simulate sending to Formspree
+            setTimeout(() => {
+                // Save order to localStorage (simulating Formspree storage)
+                saveOrderToLocalStorage(orderData);
+                
+                // Show success animation
+                step2.style.display = 'none';
+                successAnimation.style.display = 'block';
+                
+                // Reset submit button
+                submitOrderBtn.innerHTML = '<i class="fas fa-check"></i> ناردنی داواکاری';
+                submitOrderBtn.disabled = false;
+                
+                // Update loyalty points
+                const pointsEarned = Math.floor(orderData.total / 1000);
+                loyaltyPoints += pointsEarned;
+                localStorage.setItem('wastaLoyaltyPoints', loyaltyPoints.toString());
+                updateLoyaltyPoints();
+                
+                // Show points earned notification
+                if (pointsEarned > 0) {
+                    setTimeout(() => {
+                        showToast(`سوپاس! تۆ ${pointsEarned} خاڵت بەدەستهێنا بۆ ئەم داواکاریە`, 'success');
+                    }, 1000);
+                }
+            }, 1500);
+        }
+        
+        // Calculate total from cart
+        function calculateTotal() {
+            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+        
+        // Generate random order number
+        function generateOrderNumber() {
+            const letters = 'WA';
+            const numbers = Math.floor(10000 + Math.random() * 90000);
+            return `${letters}${numbers}`;
+        }
+        
+        // Estimate delivery time
+        function estimateDeliveryTime(orderData) {
+            const now = new Date();
+            const orderDateTime = new Date(`${orderData.orderDate}T${orderData.orderTime}`);
+            
+            // If order is for pickup, use order time
+            if (orderData.locationType === 'pickup') {
+                return `${orderDateTime.getHours().toString().padStart(2, '0')}:${orderDateTime.getMinutes().toString().padStart(2, '0')}`;
+            }
+            
+            // If order is for delivery, add 30-45 minutes
+            const deliveryDateTime = new Date(orderDateTime.getTime() + (40 * 60000)); // 40 minutes later
+            return `${deliveryDateTime.getHours().toString().padStart(2, '0')}:${deliveryDateTime.getMinutes().toString().padStart(2, '0')}`;
+        }
+        
+        // Save order to localStorage (simulating Formspree storage)
+        function saveOrderToLocalStorage(orderData) {
+            orders.push(orderData);
+            localStorage.setItem('wastaOrders', JSON.stringify(orders));
+            
+            // Also simulate sending to Formspree (in a real scenario, this would be a fetch request)
+            // For demo purposes, we'll log it
+            console.log('Order would be sent to Formspree:', orderData);
+            
+            // In a real implementation, you would use:
+            // fetch(FORMSPREE_URL, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(orderData)
+            // })
+        }
+        
+        // Load orders from localStorage
+        function loadOrders() {
+            ordersList.innerHTML = '';
+            
+            if (orders.length === 0) {
+                ordersList.innerHTML = '<p style="text-align: center; padding: 2rem; color: #999;">هیچ داواکاریەک نیە</p>';
+                return;
+            }
+            
+            // Sort orders by timestamp (newest first)
+            const sortedOrders = [...orders].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            sortedOrders.forEach(order => {
+                const orderElement = document.createElement('div');
+                orderElement.className = 'order-card';
+                
+                // Format items list
+                const itemsList = order.items.map(item => 
+                    `${item.quantity}x ${item.name} (${(item.price * item.quantity).toLocaleString()} دینار)`
+                ).join('<br>');
+                
+                orderElement.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <h3>داواکاری: ${order.orderNumber}</h3>
+                            <p><strong>کات:</strong> ${order.orderDate} ${order.orderTime}</p>
+                            <p><strong>شوێن:</strong> ${order.locationType === 'pickup' ? 'هێنان' : 'ناردن'}</p>
+                            <p><strong>ناونیشان:</strong> ${order.location || 'نا دیاری کراو'}</p>
+                        </div>
+                        <div style="text-align: left;">
+                            <h3>${order.total.toLocaleString()} دینار</h3>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>کەبابەکان:</strong></p>
+                        <p>${itemsList}</p>
+                    </div>
+                    ${order.notes ? `<p><strong>تێبینی:</strong> ${order.notes}</p>` : ''}
+                    ${order.phone ? `<p><strong>ژمارە:</strong> ${order.phone}</p>` : ''}
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">
+                        <em>کات: ${new Date(order.timestamp).toLocaleString('ku')}</em>
+                    </p>
+                `;
+                
+                ordersList.appendChild(orderElement);
+            });
+        }
+        
+        // Reset form
+        function resetForm() {
+            // Reset form steps
+            step1.style.display = 'block';
+            step2.style.display = 'none';
+            successAnimation.style.display = 'none';
+            
+            // Reset form values
+            document.getElementById('locationType').value = 'pickup';
+            document.getElementById('location').value = '';
+            
+            // Reset spice level
+            spiceDots.forEach(dot => dot.classList.remove('active'));
+            spiceDots[2].classList.add('active');
+            spiceLevelInput.value = '2';
+            document.querySelector('.spice-level').textContent = 'مامناوەند';
+            
+            // Reset notes
+            noteOptions.forEach(option => option.classList.remove('active'));
+            document.getElementById('notes').value = '';
+            document.getElementById('phone').value = '';
+            
+            // Reset location options
+            locationOptions.forEach(opt => opt.classList.remove('active'));
+            locationOptions[1].classList.add('active');
+            
+            // Reset date and time
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('orderDate').value = today;
+            
+            const nextHour = new Date();
+            nextHour.setHours(nextHour.getHours() + 1);
+            document.getElementById('orderTime').value = `${nextHour.getHours().toString().padStart(2, '0')}:${nextHour.getMinutes().toString().padStart(2, '0')}`;
+        }
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
